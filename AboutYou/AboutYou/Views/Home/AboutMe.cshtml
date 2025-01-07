@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+@{
+    @model AboutMeViewModel
+
+    if (Model.Name == null)
+    {
+        
+        <form method="post" class="form">
+            <div>
+                <label class="label" for="Name">Name:</label>
+                <input class="label input-span input1" asp-for="Name" />
+            </div>
+            <div>
+                <label class="label" for="Email">Email:</label>
+                <input class="form input-span input1" asp-for="Email"/>
+            </div>
+            <div>
+                <label class="label" for="Nachricht">Nachricht:</label>
+                <textarea class="form input-span input1" asp-for="Nachricht"></textarea>
+            </div>
+            <button class="button" type="submit">Senden</button>
+            <button class="button" type="submit" asp-controller="Home" asp-action="Index">Zurück</button>
+        </form>
+    }
+
+
+    if (Model.Name != null)
+    {
+        <h5>Eingaben:</h5>
+        <p>Name:        @Model.Name</p>
+        <p>Email:       @Model.Email</p>
+        <p>Nachricht:   @Model.Nachricht</p>
+        <form>
+            <button class="button" type="submit" asp-controller="Home" asp-action="Index">Zurück</button>
+        </form>
+    }
+
+    
+}
+
+
