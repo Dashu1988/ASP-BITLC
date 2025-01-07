@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Einkaufsliste.Models;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Einkaufsliste.Controllers;
 
@@ -23,7 +24,43 @@ public class HomeController : Controller
         return View();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Angelegt(Position p)
+    {
+        return View(p);
+    }
+
+    public IActionResult ArtikelAnsehen()
+    {
+        List<Position> p = Repository.Pos;
+        return View(p);
+    }
+
+    [HttpGet]
+    public IActionResult ArtikelForm()
+    {
+        
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult ArtikelForm(Position p)
+    {
+        if (ModelState.IsValid) {
+            Position temp = Repository.Add(p);
+            return View("Angelegt", temp);
+        } else {
+            return View();
+        }
+        
+    }
+    
+    public IActionResult ArtikelLöschen(Position p)
+    {
+        Repository.Remove(p);
+        return  RedirectToAction("ArtikelAnsehen");
+    }
+
+[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

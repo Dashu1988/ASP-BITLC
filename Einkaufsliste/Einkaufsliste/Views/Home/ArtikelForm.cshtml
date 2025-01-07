@@ -1,0 +1,24 @@
+@model Einkaufsliste.Models.Position
+
+@{
+    ViewData["Title"] = "ArtikelForm";
+}
+
+
+<form asp-action="ArtikelForm" method="post">
+    <label asp-for="Name">Artikelname:</label>
+    <input asp-for="Name"/>
+    <label asp-for="Menge">Menge: </label>
+    <input asp-for="Menge"/>
+    <label asp-for="Shop">Geschäft: </label>
+    <input asp-for="Shop"/>
+
+    <button type="submit">Bestätigen</button>
+    <button asp-controller="Home" asp-action="Index">Zurück</button>
+
+    <div asp-validation-summary="All"></div>
+</form>
+<!--
+neuer Artikel eingeben
+2 Button "Speichern", "Zurück"
+-->

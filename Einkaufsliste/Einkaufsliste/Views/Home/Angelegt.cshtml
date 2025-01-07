@@ -1,0 +1,20 @@
+@model Einkaufsliste.Models.Position
+@{
+    ViewData["Title"] = "Angelegt";
+}
+
+<h3>@Model.Name</h3> wurde angelegt
+<h6>@Model.Menge sind auf der Liste</h6>
+
+<form>
+    <button asp-controller="Home" asp-action="Index">Startseite</button>
+    <button asp-controller="Home" asp-action="ArtikelForm">Artikel hinzufügen</button>
+    <button asp-controller="Home" asp-action="ArtikelAnsehen">Einkaufsliste</button>
+</form>
+
+<!--
+Nach Angelegt.cshtml
+Zeigt wieviele Artikel auf liste
+Button: Startseite
+Button: ArtikelForm.cshtml
+-->
