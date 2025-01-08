@@ -1,11 +1,15 @@
 using System.Data;
 
 using Einkaufsliste;
+using Einkaufsliste.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-SQLiteConn.CreateConnection();
-SQLiteConn.ReadData(SQLiteConn.sqlite_conn);
+// Create SQLite connection AND ReadData
+SQLiteConn.ReadData();
+
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

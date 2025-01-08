@@ -46,8 +46,9 @@ public class HomeController : Controller
     public IActionResult ArtikelForm(Position p)
     {
         if (ModelState.IsValid) {
-            Position temp = Repository.Add(p);
-            return View("Angelegt", temp);
+            SQLiteConn.InsertData(p);
+            SQLiteConn.ReadData();
+            return View("Angelegt", p);
         } else {
             return View();
         }
@@ -56,7 +57,8 @@ public class HomeController : Controller
     
     public IActionResult ArtikelLöschen(Position p)
     {
-        Repository.Remove(p);
+        SQLiteConn.DeleteData(p);
+        SQLiteConn.ReadData();
         return  RedirectToAction("ArtikelAnsehen");
     }
 
