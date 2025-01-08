@@ -26,7 +26,8 @@ public class HomeController : Controller
 
     public IActionResult Angelegt(Position p)
     {
-        return View(p);
+        
+        return View();
     }
 
     public IActionResult ArtikelAnsehen()
@@ -48,7 +49,14 @@ public class HomeController : Controller
         if (ModelState.IsValid) {
             SQLiteConn.InsertData(p);
             SQLiteConn.ReadData();
-            return View("Angelegt", p);
+            foreach (Position pos in Repository.Pos)
+            {
+                if (pos.Name == p.Name && pos.Shop == p.Shop)
+                {
+                    return View("Angelegt", pos);
+                }
+            }
+            return RedirectToAction("ArtikelAnsehen");
         } else {
             return View();
         }
