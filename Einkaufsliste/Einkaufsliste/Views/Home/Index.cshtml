@@ -6,7 +6,10 @@
 Zwei button -> Artikel hinzufügen, Einkaufsliste anzeigen
 -->
 <form>
-<button asp-controller="Home" asp-action="ArtikelForm">Artikel hinzufügen</button>
-<button asp-controller="Home" asp-action="ArtikelAnsehen" autofocus>Einkaufsliste anzeigen</button>
-    
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button asp-controller="Home" asp-action="ArtikelForm" class="btn btn-secondary">Artikel hinzufügen</button>
+        <button asp-controller="Home" asp-action="ArtikelAnsehen" class="btn btn-secondary" autofocus>Einkaufsliste anzeigen</button>
+    </div>
+   
+
 </form>

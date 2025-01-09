@@ -45,6 +45,7 @@ namespace Einkaufsliste
 
             conn.Close();
             ReadData();
+            Repository.ReadShops();
         }
 
         static public void DeleteData(Position p)

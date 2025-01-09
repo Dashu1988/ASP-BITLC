@@ -34,13 +34,13 @@ public class HomeController : Controller
 
     public IActionResult ArtikelAnsehen()
     {
-        return View(Repository.Pos);
+        return View(Repository.Pos.OrderBy(x=> x.Shop).ThenBy(x=> x.Name).ToList());
     }
 
     [HttpGet]
     public IActionResult ArtikelForm()
     {
-        
+        Repository.ReadShops();
         return View();
     }
 

@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model CalcOper
+
+<script> function changeOperator(oper) {
+        document.getElementById('operator').value = oper;
+    }
+</script>
+<body>
+
+    <form asp-action="Index" type="submit" method="post">
+        @if (Model != null)
+        {
+            <input asp-for="n1" value="@Model.res" class="form-control" type="text" aria-label="default input example"></input>
+        }
+        else
+        {
+            <input asp-for="n1" class="form-control" type="text" aria-label="default input example"></input>
+        }
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('+')">+</button>
+            <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('-')">-</button>
+            <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('*')">*</button>
+            <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('/')">/</button>
+            <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('%')">%</button>
+            <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('√')">√</button>
+
+
+        </div>
+        <input asp-for="n2" class="form-control" type="text" aria-label="default input example"></input>
+        <input id="operator" asp-for="op" type="hidden">
+    </form>
+    @if (Model != null)
+    {
+        if (Model.res == null)
+        {
+            <label>Teilen durch 0 nicht erlaubt.</label>
+        }
+        else
+        {
+            <input asp-for="res" class="form-control" type="text" value="@Model.res" aria-label="Disabled input example"
+                   disabled>
+        }
+    }
+    @foreach (CalcOper c in Enumerable.Reverse(CalcOper.AllOpers))
+    {
+        <label>@c.n1 @c.op @c.n2 = @c.res</label><br/>
+    }
+
+</body>

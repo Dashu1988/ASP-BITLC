@@ -7,9 +7,9 @@
     <head>
     </head>
     <body>
-        <h2>Liste:</h2>
-        <table>
-            <thead>
+        <h2>Liste</h2>
+        <table class="table table-striped table-hover">           
+            <thead >
                 <tr>
                     <th>Artikel</th>
                     <th>Menge</th>
@@ -43,8 +43,10 @@
             </tbody>
         </table>
         <form>
-            <button asp-controller="Home" asp-action="Index">Startseite</button>
-            <button asp-controller="Home" asp-action="ArtikelForm" autofocus>Artikel einfügen</button>
+            <div class="btn-group" role="group" aria-label="Basic example">
+            <button asp-controller="Home" asp-action="Index" class="btn btn-secondary">Startseite</button>
+            <button asp-controller="Home" asp-action="ArtikelForm" class="btn btn-secondary" autofocus>Artikel einfügen</button>
+            </div>
         </form>
     </body>
 </html>
