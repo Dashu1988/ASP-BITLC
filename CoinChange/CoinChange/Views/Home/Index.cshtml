@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model CoinChange.Models.CoinReturn
+
+<h3>Menge angeben: </h3>
+<form asp-action="Index" type="submit" method="post">
+    <input asp-for="input"></input>
+    <button type="submit">Submit</button>
+</form>
+@if (Model != null)
+{
+    <label>@Model.GetChangeToString(Model.input)</label>
+}
