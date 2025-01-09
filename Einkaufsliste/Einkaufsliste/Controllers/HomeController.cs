@@ -23,17 +23,18 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    
 
-    public IActionResult Angelegt(Position p)
+    public IActionResult Angelegt()
     {
         
-        return View();
+        return View(Repository.Pos.Count());
     }
 
     public IActionResult ArtikelAnsehen()
     {
-        List<Position> p = Repository.Pos;
-        return View(p);
+        return View(Repository.Pos);
     }
 
     [HttpGet]
@@ -48,12 +49,11 @@ public class HomeController : Controller
     {
         if (ModelState.IsValid) {
             SQLiteConn.InsertData(p);
-            SQLiteConn.ReadData();
             foreach (Position pos in Repository.Pos)
             {
                 if (pos.Name == p.Name && pos.Shop == p.Shop)
                 {
-                    return View("Angelegt", pos);
+                    return RedirectToAction("Angelegt");
                 }
             }
             return RedirectToAction("ArtikelAnsehen");

@@ -1,10 +1,10 @@
-@model Einkaufsliste.Models.Position
+@model int
 @{
     ViewData["Title"] = "Angelegt";
 }
 
-<h3>@Model.Name</h3> wurde angelegt
-<h6>@Model.Menge sind auf der Liste</h6>
+<h3>Artikel wurde angelegt</h3>
+<h6>@Model sind auf der Liste</h6>
 
 <form>
     <button asp-controller="Home" asp-action="Index">Startseite</button>
