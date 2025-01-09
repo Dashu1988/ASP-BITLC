@@ -1,0 +1,35 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ToDoList.Models.ToDoTask
+@{
+    ViewData["Titel"] = "ToDo Anlegen";
+}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var today = new Date();
+        var day = String(today.getDate()).padStart(2, '0');
+        var month = String(today.getMonth() + 1).padStart(2, '0');
+        var year = today.getFullYear();
+        var todayDate = year + '-' + month + '-' + day;
+        document.getElementById("cal_date").value = todayDate;
+    });
+</script>
+
+<form asp-action="ToDoForm" method="post">
+
+    <div class="form-floating mb-3">
+        <input asp-for="title" type="text" class="form-control" id="floatingInput" placeholder="Titel">
+        <label for="floatingInput">Titel</label>
+    </div>
+    <div class="form-floating">
+        <input asp-for="description" type="text" class="form-control" id="floatingInput" placeholder="Aufgabe">
+        <label for="floatingInput">Aufgabe</label>
+    </div>
+   
+    
+    <div>
+        <label asp-for="dueDate">Datum</label>
+        <input type="date" asp-for="dueDate" id="cal_date" class="form-control" style="width: 20%"/>
+    </div>
+    <button type="submit" class="btn btn-secondary">Bestätigen</button>
+    
+</form>
