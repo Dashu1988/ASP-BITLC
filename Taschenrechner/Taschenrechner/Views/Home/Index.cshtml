@@ -23,17 +23,18 @@
             <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('-')">-</button>
             <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('*')">*</button>
             <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('/')">/</button>
+            <label class="btn btn-outline-primary" disabled></label>
             <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('%')">%</button>
             <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('√')">√</button>
-
-
+            <button type="submit" class="btn btn-outline-primary" onclick="changeOperator('^')">^</button>
+            <button type="submit" class="btn btn-danger" onclick="changeOperator('x')">X</button>
         </div>
         <input asp-for="n2" class="form-control" type="text" aria-label="default input example"></input>
         <input id="operator" asp-for="op" type="hidden">
     </form>
     @if (Model != null)
     {
-        if (Model.res == null)
+        if (Model.res == null && Model.n2 == 0)
         {
             <label>Teilen durch 0 nicht erlaubt.</label>
         }

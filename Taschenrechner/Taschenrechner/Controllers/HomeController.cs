@@ -23,9 +23,14 @@ public class HomeController : Controller
     public IActionResult Index(CalcOper c)
     {
         c.Calc();
-        CalcOper.AllOpers.Add(c);
+        if (c.res != null)
+        {
+            CalcOper.AllOpers.Add(c);
+        }
+        
         return View(c);
     }
+
     public IActionResult Privacy()
     {
         return View();
