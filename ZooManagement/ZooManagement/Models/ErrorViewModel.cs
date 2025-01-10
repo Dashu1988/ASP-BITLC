@@ -1,4 +1,4 @@
-namespace Zoo.Models;
+namespace ZooManagement.Models;
 
 public class ErrorViewModel
 {

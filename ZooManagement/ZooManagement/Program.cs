@@ -1,16 +1,13 @@
 using System.Data.SQLite;
-using Zoo.Models;
-using sql = Zoo.Models.SQLiteConn.SQLiteConn;
+using ZooManagement.Models;
+using sql = ZooManagement.Models.SQLiteConn.SQLiteConn;
+using gen = ZooManagement.Models.SQLDataGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
-SQLiteConnection conn = sql.connection;
+gen.DataGenerationAnimals();
 
-Zoo z = new Zoo();
 
-sql.ReadWelt(1);
-
-;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
