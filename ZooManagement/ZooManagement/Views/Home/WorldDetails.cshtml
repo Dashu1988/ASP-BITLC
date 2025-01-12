@@ -1,0 +1,15 @@
+@{
+    Layout = null;
+}
+@model List<Welt>
+<h1>test</h1>
+@foreach (Welt w in @Model)
+{
+    foreach (Gehege g in w.Gehege)
+    {
+        foreach (Tier t in g.Tiere)
+        {
+            <div>@t.Tierpass.Name</div>
+        }
+    }
+}

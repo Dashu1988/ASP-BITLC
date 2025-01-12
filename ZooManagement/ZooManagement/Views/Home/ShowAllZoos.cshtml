@@ -1,0 +1,18 @@
+@{
+    Layout = "_Layout";
+}
+@model List<Zoo>
+<table class="table">
+
+    @foreach (Zoo zoo in @Model)
+    {
+        <tr>
+            <form  asp-action="ZooDetails" type="submit" method="post">
+                <input name="z.ZooID" type="hidden" value="@zoo.ID"/>
+                <td>
+                    <button class="btn btn-primary">@zoo.Name</button>
+                </td>
+            </form>
+        </tr>
+    }
+</table>

@@ -7,7 +7,7 @@ public class CalcOper
     static public List<CalcOper> AllOpers = new List<CalcOper>();
     public double n1 { get; set; }
     public double n2 { get; set; }
-    public string? op { get; set; }
+    public string op { get; set; }
     public double? res { get; set; }
 
    

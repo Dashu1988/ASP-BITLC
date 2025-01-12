@@ -1,12 +1,16 @@
 using System.Data.SQLite;
 using ZooManagement.Models;
-using sql = ZooManagement.Models.SQLiteConn.SQLiteConn;
+using sql = ZooManagement.Models.SQLiteConn;
 using gen = ZooManagement.Models.SQLDataGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
-gen.DataGenerationAnimals();
 
+// List<Zoo> z = sql.ReadAllZoo();
+// foreach (var zoo in z)
+// {
+//     Console.WriteLine(zoo.Name);
+// }
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -30,7 +34,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}")
+        pattern: "{controller=Home}/{action=ShowAllZoos}/{id?}")
     .WithStaticAssets();
 
 

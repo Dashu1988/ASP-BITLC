@@ -1,0 +1,29 @@
+@{
+    Layout = "_Layout";
+}
+@model Zoo
+
+<h1>@Model.Name</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (Welt w in @Model.Welten.OrderBy(x =>x.ID))
+    {
+        <tr>
+            <td>@w.ID</td>
+            <td>
+                <form asp-action="WorldDetails" type="submit" method="post">
+                    <input name="wid" type="hidden" value="@Model.ID"/>
+                    <input name="z.OptionID" type="hidden" value="@w.ID" />
+                    <button class="btn btn-primary">@w.Name</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
