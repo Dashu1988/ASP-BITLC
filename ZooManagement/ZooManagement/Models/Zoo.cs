@@ -3,12 +3,20 @@ using Microsoft.AspNetCore.Components;
 namespace ZooManagement.Models;
 
 
-public class ZooData()
+public class ZooModel()
 {
     public int ZooID { get; set; }
+    public string ZooName { get; set; }
     public int OptionID { get; set; }
+    public Zoo zoo { get; set; } = new Zoo();
 }
 
+public class AddAnimal()
+{
+    public int GehegeID { get; set; }
+    public string Name { get; set; }
+    public string Tierart  {get; set;}
+}
 
 public class Zoo
 {

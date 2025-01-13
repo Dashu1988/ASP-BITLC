@@ -6,11 +6,7 @@ using gen = ZooManagement.Models.SQLDataGen;
 var builder = WebApplication.CreateBuilder(args);
 
 
-// List<Zoo> z = sql.ReadAllZoo();
-// foreach (var zoo in z)
-// {
-//     Console.WriteLine(zoo.Name);
-// }
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

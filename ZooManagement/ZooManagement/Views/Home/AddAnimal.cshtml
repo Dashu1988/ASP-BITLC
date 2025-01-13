@@ -1,0 +1,17 @@
+@{
+    Layout = "_Layout";
+}
+@model List<Tierart>
+
+<form asp-action="AddAnimal" method="post">
+    <input name="aa.GehegeID" value="1" type="hidden"/>
+    <select name="aa.Tierart">
+        @foreach (Tierart t in Model)
+        {
+            <option value="@t.Name">@t.Name</option>
+        }
+
+    </select>
+    <input name="aa.Name" placeholder="Name des Tier"></input>
+    <button type="submit">Klick mich!</button>
+</form>

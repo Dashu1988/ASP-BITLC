@@ -1,15 +1,42 @@
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
-@model List<Welt>
-<h1>test</h1>
-@foreach (Welt w in @Model)
+@model Zoo
+<h1>@Model.Name</h1>
+
+@foreach (Welt w in @Model.Welten)
 {
-    foreach (Gehege g in w.Gehege)
-    {
-        foreach (Tier t in g.Tiere)
-        {
-            <div>@t.Tierpass.Name</div>
-        }
-    }
+    <h3>@w.Name</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Art</th>
+                <th>Gehege ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Gehege g in w.Gehege)
+            {
+                @foreach (Tier t in g.Tiere)
+                {
+                    <tr>
+                        <td>@t.ID</td>
+                        <td>@t.Tierpass.Name</td>
+                        <td>@t.Tierpass.Tierart.Name</td>
+                        <td>
+                            <form asp-action="EnclosureDetails" method="post">
+                                <input name="z.ZooID" value="@Model.ID" type="hidden"/>
+                                <input name="z.OptionID" value="@t.GehegeID" type="hidden"/>
+                                <button type="submit" class="btn btn-primary">@t.GehegeID</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+
+    </table>
 }

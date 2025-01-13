@@ -1,5 +1,34 @@
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
-@model Zoo
+@model ZooModel
+<h1>@Model.zoo.Name</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Art</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Welt w in Model.zoo.Welten)
+        {
+            @foreach (Gehege g in w.Gehege)
+            {
+                if (g.ID == Model.OptionID)
+                {
+                    foreach (Tier t in g.Tiere)
+                    {
+                        <tr>
+                            <td>@t.ID</td>
+                            <td>@t.Tierpass.Name</td>
+                            <td>@t.Tierpass.Tierart.Name</td>
+                        </tr>
+                    }
+                }
+            }
+        }
+    </tbody>
+</table>
 

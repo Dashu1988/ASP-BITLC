@@ -40,20 +40,38 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult ZooDetails(ZooData z)
+    public IActionResult ZooDetails(ZooModel z)
     {
-        return View(sql.ReadZoo(z.ZooID));
+        return View(sql.ReadZoo(z.ZooID, true));
     }
 
     [HttpPost]
-    public IActionResult WorldDetails(ZooData z)
+    public IActionResult WorldDetails(ZooModel z)
     {
-        List<Welt> temp = sql.ReadWorlds(z.ZooID);
-        foreach (Welt w in temp)
-        {
-            w.Gehege = sql.ReadEnclosures(w.ID);
-        }
+       Zoo temp = sql.ReadZoo(z.ZooID, true);
         return View(temp);
+    }
+
+    [HttpPost]
+    public IActionResult EnclosureDetails(ZooModel z)
+    {
+        z.zoo = sql.ReadZoo(z.ZooID, true);
+        
+        return View(z);
+    }
+
+    [HttpGet]
+    public IActionResult AddAnimal()
+    {
+        return View(sql.ReadAnimalTypes());
+    }
+
+    [HttpPost]
+    public IActionResult AddAnimal(AddAnimal aa)
+    {
+        //TODO: EVERYTHING ABOUT THIS IS FUCKED
+        Console.WriteLine(aa.Name);
+        return RedirectToAction("ShowAllZoos");
     }
   
     

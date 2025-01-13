@@ -18,7 +18,7 @@
             <td>@w.ID</td>
             <td>
                 <form asp-action="WorldDetails" type="submit" method="post">
-                    <input name="wid" type="hidden" value="@Model.ID"/>
+                    <input name="z.ZooID" type="hidden" value="@Model.ID"/>
                     <input name="z.OptionID" type="hidden" value="@w.ID" />
                     <button class="btn btn-primary">@w.Name</button>
                 </form>
