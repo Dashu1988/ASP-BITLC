@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model test
+
+<form asp-action="Index" method="post">
+    <input asp-for="numbers.Add" value="@Model.numbers"></input>
+    <button type="submit">Klick mich</button>
+</form>
+
+@if (@Model != null)
+{
+    foreach (int x in @Model.numbers)
+    {
+        <div>@x</div>
+    }
+}

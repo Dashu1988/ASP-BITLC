@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<BlogPost>
+
+<h1>Willkommen auf unserem Blog</h1>
+
+<div class="accordion" id="accordionExample">
+    @foreach (BlogPost item in @Model)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading@item.Id">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{@item.Id}" aria-expanded="false" aria-controls="collapse{@item.Id}">
+                    <div>@item.Title - @item.Author</div>
+                </button>
+            </h2>
+            <div id="collapse{@item.Id}" class="accordion-collapse collapse" aria-labelledby="heading{@item.Id}">
+                <div class="accordion-body">
+                    <a asp-action="Details" asp-route-Id="@item.Id">#</a>
+                    <strong>@item.CreatedAt.ToString("dd/MM/yyyy")</strong><br/>
+                    @item.Content
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+    
+    
