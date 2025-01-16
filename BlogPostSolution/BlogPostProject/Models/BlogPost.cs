@@ -1,5 +1,5 @@
 using System.Collections;
-
+using Microsoft.EntityFrameworkCore;
 namespace BlogPostProject.Models;
 
 public class BlogPost

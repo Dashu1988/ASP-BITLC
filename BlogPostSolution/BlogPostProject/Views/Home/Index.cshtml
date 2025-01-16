@@ -2,7 +2,15 @@
     ViewData["Title"] = "Home Page";
 }
 @model List<BlogPost>
-
+<script>
+    function changeImage(newSrc) {
+        let fac = 25;
+        const imageElement = document.getElementById("animalsvg");
+        imageElement.src = newSrc;
+        imageElement.height = fac;
+        imageElement.width = fac;
+    }
+</script>
 <h1>Willkommen auf unserem Blog</h1>
 
 <div class="accordion" id="accordionExample">
@@ -10,13 +18,31 @@
     {
         <div class="accordion-item">
             <h2 class="accordion-header" id="heading@item.Id">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{@item.Id}" aria-expanded="false" aria-controls="collapse{@item.Id}">
-                    <div>@item.Title - @item.Author</div>
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse{@item.Id}" aria-expanded="false" aria-controls="collapse{@item.Id}">
+                    <div>@item.Title - @item.Author
+                        @if (item.Author == "Trulli")
+                        {
+                            <img src="cat.svg" width="16" height="25">
+                        }
+                        else if (item.Author == "John")
+                        {
+                            <img src="dog.svg" width="25" height="25">
+                        }
+                        else if (item.Author == "Die Leos")
+                        {
+                            <img src="gecko.svg" width="25" height="25">
+                        }
+
+                        <!--<img id="animalsvg" src="gecko.svg" width="25" height="25">-->
+                    </div>
+
                 </button>
             </h2>
             <div id="collapse{@item.Id}" class="accordion-collapse collapse" aria-labelledby="heading{@item.Id}">
                 <div class="accordion-body">
-                    <a asp-action="Details" asp-route-Id="@item.Id">#</a>
+                    <a asp-action="Details" asp-route-Id="@item.Id"> <img src="dialog-question.svg" width="25"
+                                                                          height="25"></a>
                     <strong>@item.CreatedAt.ToString("dd/MM/yyyy")</strong><br/>
                     @item.Content
                 </div>
