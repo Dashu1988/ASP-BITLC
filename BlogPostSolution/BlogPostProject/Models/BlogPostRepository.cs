@@ -1,6 +1,8 @@
+using BlogPostProject.Models.Data;
+
 namespace BlogPostProject.Models;
 
-public class BlogPostRepository
+public class BlogPostRepository : IBlogPostRepository
 {
     private List<BlogPost> _blogPosts = new();
 

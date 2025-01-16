@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<BlogPost>
+
+<h1>Willkommen auf unserem Blog</h1>
+
+@* <div class="accordion" id="accordionExample"> *@
+@*     @foreach (BlogPost item in @Model) *@
+@*     { *@
+@*         <div class="accordion-item"> *@
+@*             <h2 class="accordion-header" id="heading @item.Id"> *@
+@*                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse @item.Id" *@
+@*                         data-bs-target="#collapse @item.Id" aria-expanded="false" aria-controls="collapse @item.Id"> *@
+@*                     <div>@item.Title - @item.Author *@
+@*                         $1$ @if (item.Author == "Trulli") #1# *@
+@*                         $1$ { #1# *@
+@*                         $1$     <img src="cat.svg" width="16" height="25"> #1# *@
+@*                         $1$ } #1# *@
+@*                         $1$ else if (item.Author == "John") #1# *@
+@*                         $1$ { #1# *@
+@*                         $1$     <img src="dog.svg" width="25" height="25"> #1# *@
+@*                         $1$ } #1# *@
+@*                         $1$ else if (item.Author == "Die Leos") #1# *@
+@*                         $1$ { #1# *@
+@*                         $1$     <img src="gecko.svg" width="25" height="25"> #1# *@
+@*                         $1$ } #1# *@
+@*                         $1$ <img id="animalsvg" src="gecko.svg" width="25" height="25"> #1# *@
+@*                     </div> *@
+@* *@
+@*                 </button> *@
+@*             </h2> *@
+@*             <div id="collapse @item.Id" class="accordion-collapse collapse" aria-labelledby="heading @item.Id"> *@
+@*                 <div class="accordion-body"> *@
+@*                     <a asp-action="Details" asp-route-Id="@item.Id"> <img src="dialog-question.svg" width="25" height="25"></a> *@
+@*                     <strong>@item.CreatedAt.ToString("dd/MM/yyyy")</strong><br/> *@
+@*                     @item.Content *@
+@*                 </div> *@
+@*             </div> *@
+@*         </div> *@
+@*     } *@
+@* </div> *@
+<div class="accordion" id="accordionExample">
+    @foreach (var item in @Model)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse-{@item.Id}" aria-expanded="true" aria-controls="collapse-{@item.Id}">
+                    @item.Id
+                </button>
+            </h2>
+            <div id="collapse-{@item.Id}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    dfgfdg
+                </div>
+            </div>
+        </div>
+        
+    }
+</div>
