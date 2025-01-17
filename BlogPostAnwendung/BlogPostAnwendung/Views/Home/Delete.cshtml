@@ -1,0 +1,20 @@
+@{
+    Layout = "_Layout";
+}
+@model BlogPost
+
+<h2>Blog-Post Löschen</h2>
+<h3>Mächtest du diesen Blog-Post wirklich löschen?</h3>
+
+<label asp-for="Title">Title</label>
+@Model.Title
+<label asp-for="Content">Content</label>
+@Model.Content
+<label asp-for="Author">Author</label>
+@Model.Author
+<label asp-for="CreatedAt">Datum</label>
+@Model.CreatedAt.ToShortDateString()
+
+<a asp-action="DeleteConfirmed" asp-route-id="@Model.Id">JA BITTE</a>
+<a asp-action="Index">NEIN DANKE</a>
+    

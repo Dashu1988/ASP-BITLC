@@ -5,6 +5,7 @@
 
         List<BlogPost> GetAllBlogPosts();
         BlogPost GetBlogPostById(int id);
+        void DeleteBlogPost(int id);
 
     }
 }

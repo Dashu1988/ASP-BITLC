@@ -29,6 +29,19 @@ namespace BlogPostAnwendung.Controllers
             return View(_blogPostRepository.GetBlogPostById(id));
         }
 
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(_blogPostRepository.GetBlogPostById(id));
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

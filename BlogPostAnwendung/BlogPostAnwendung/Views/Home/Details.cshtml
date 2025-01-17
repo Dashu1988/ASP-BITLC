@@ -10,7 +10,7 @@
     <h2>@Model.Title</h2>
     <p> Erstellt am: @Model.CreatedAt.ToShortDateString() von @Model.Author</p>
     <p>@Model.Content</p>
-
+    <a asp-action="Delete" asp-route-id="@Model.Id">Löschen</a>
 </div>
 
 
